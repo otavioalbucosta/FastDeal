@@ -15,9 +15,7 @@ class _HomeAppState extends State<HomeApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('asdlk asdlk')
-      ),
+      appBar: AppBar(),
     );
   }
 }
