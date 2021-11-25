@@ -62,7 +62,9 @@ class LoginPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.0))),
               ),
             ),
-            Icon(Icons.login, size: 40.0),
+            GestureDetector(
+              child: Icon(Icons.login, size: 40.0),
+            ),
             Padding(
               padding: EdgeInsets.only(top: 120.0, bottom: 5.0),
               child: Text(
