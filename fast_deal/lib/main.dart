@@ -1,21 +1,10 @@
+import 'package:fast_deal/view/loginpage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const HomeApp());
-}
-
-class HomeApp extends StatefulWidget {
-  const HomeApp({Key? key}) : super(key: key);
-
-  @override
-  _HomeAppState createState() => _HomeAppState();
-}
-
-class _HomeAppState extends State<HomeApp> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('FastD')),
-    );
-  }
+  runApp(MaterialApp(
+    home: LoginPage(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
