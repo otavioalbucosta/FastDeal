@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:fast_deal/view/registerpage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +44,7 @@ class LoginPage extends StatelessWidget {
               padding: EdgeInsets.only(
                   left: 10.0, right: 10.0, bottom: 27.0, top: 30.0),
               child: TextField(
-                textAlign: TextAlign.start,
+                textAlign: TextAlign.center,
                 decoration: InputDecoration(
                     labelText: "Login",
                     labelStyle: GoogleFonts.poppins(fontSize: 16.0),
@@ -77,7 +78,13 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RegisterPage()),
+                  );
+                },
                 child: Padding(
                   padding: EdgeInsets.only(top: 10.0, bottom: 5.0),
                   child: Text(
