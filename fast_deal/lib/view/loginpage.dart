@@ -55,6 +55,9 @@ class LoginPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 100.0),
               child: TextField(
+                obscureText: true,
+                enableSuggestions: false,
+                autocorrect: false,
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                     labelText: "Senha",

@@ -4,14 +4,19 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    double? width;
-    double? height;
+  _RegisterPageState createState() => _RegisterPageState();
+}
 
+class _RegisterPageState extends State<RegisterPage> {
+  double? width;
+  double? height;
+  bool _isObscure = true;
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
       padding: EdgeInsets.only(top: 20.0, bottom: 15.0),
@@ -45,27 +50,21 @@ class RegisterPage extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 13.0),
-              child: buildTextField("Senha *"),
+              child: buildTextField("Senha *", isPassword: true),
             ),
             Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 13.0),
-              child: buildTextField("Confirmar Senha *"),
+              child: buildTextField("Confirmar Senha *", isPassword: true),
             ),
             Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 13.0),
-              child: buildTextField("E-mail *"),
+              child:
+                  buildTextField("E-mail *", type: TextInputType.emailAddress),
             ),
             Padding(
                 padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 50.0),
-                child: TextField(
-                  textAlign: TextAlign.start,
-                  decoration: InputDecoration(
-                      labelText: "Número de Telefone",
-                      labelStyle: GoogleFonts.poppins(fontSize: 16.0),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0))),
-                  keyboardType: TextInputType.number,
-                )),
+                child: buildTextField("Número de Telefone",
+                    type: TextInputType.phone)),
             GestureDetector(
               child: Center(
                 child: Ink(
@@ -115,14 +114,40 @@ class RegisterPage extends StatelessWidget {
           ]),
     ));
   }
-}
 
-Widget buildTextField(String label) {
-  return TextField(
-    textAlign: TextAlign.start,
-    decoration: InputDecoration(
-        labelText: label,
-        labelStyle: GoogleFonts.poppins(fontSize: 16.0),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.0))),
-  );
+  Widget buildTextField(String label,
+      {TextInputType type = TextInputType.text, bool isPassword = false}) {
+    if (isPassword) {
+      return TextField(
+        keyboardType: type,
+        obscureText: _isObscure,
+        enableSuggestions: false,
+        autocorrect: false,
+        textAlign: TextAlign.start,
+        decoration: InputDecoration(
+            labelText: label,
+            labelStyle: GoogleFonts.poppins(fontSize: 16.0),
+            suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    _isObscure = !_isObscure;
+                  });
+                },
+                icon:
+                    Icon(_isObscure ? Icons.visibility : Icons.visibility_off)),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(30.0))),
+      );
+    } else {
+      return TextField(
+        keyboardType: type,
+        textAlign: TextAlign.start,
+        decoration: InputDecoration(
+            labelText: label,
+            labelStyle: GoogleFonts.poppins(fontSize: 16.0),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(30.0))),
+      );
+    }
+  }
 }
