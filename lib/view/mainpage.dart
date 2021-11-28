@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fast_deal/view/loginpage.dart';
 import 'package:fast_deal/view/registerpage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:fast_deal/view/productpage.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   PageController _pageController = PageController();
-  List<Widget> _pages = [HomePage(), LoginPage(), RegisterPage()];
+  List<Widget> _pages = [HomePage(), LoginPage(), ProductPage()];
   int _selectedIndex = 0;
 
   @override
