@@ -1,3 +1,4 @@
+import 'package:fast_deal/view/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:fast_deal/view/loginpage.dart';
 import 'package:fast_deal/view/registerpage.dart';
@@ -12,7 +13,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   PageController _pageController = PageController();
-  List<Widget> _pages = [MainPage(), LoginPage(), RegisterPage()];
+  List<Widget> _pages = [HomePage(), LoginPage(), RegisterPage()];
   int _selectedIndex = 0;
 
   @override
