@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:fast_deal/view/mainpage.dart';
 import 'package:fast_deal/view/registerpage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +68,25 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              child: Icon(Icons.login, size: 40.0),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MainPage()),
+                );
+              },
+              child: Ink(
+                width: 50.0,
+                height: 50.0,
+                decoration: const ShapeDecoration(
+                  color: Colors.black12,
+                  shape: CircleBorder(),
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.login, size: 40.0),
+                  color: Colors.black,
+                  onPressed: () {},
+                ),
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 120.0, bottom: 5.0),
