@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 35.0, bottom: 5.0),
               child: Text(
-                "ENTRAR",
+                "ENTRE",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
                     textStyle: TextStyle(
