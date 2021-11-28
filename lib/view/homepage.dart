@@ -18,7 +18,14 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       body: Column(
-        children: [],
+        children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Icon(Icons.place, color: Colors.grey),
+            Text("Avenida X, 9999. Fortaleza",
+                style: GoogleFonts.poppins(color: Colors.cyan, fontSize: 11.0)),
+            IconButton(icon: Icon(Icons.my_location), onPressed: () {})
+          ]),
+        ],
       ),
     );
   }
