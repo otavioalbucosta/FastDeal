@@ -15,6 +15,13 @@ class _RegisterPageState extends State<RegisterPage> {
   double? width;
   double? height;
   bool _isObscure = true;
+
+  TextEditingController _login = TextEditingController();
+  TextEditingController _password = TextEditingController();
+  TextEditingController _confirmPassword = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _phone = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,24 +53,25 @@ class _RegisterPageState extends State<RegisterPage> {
             Padding(
               padding: EdgeInsets.only(
                   left: 10.0, right: 10.0, bottom: 13.0, top: 14.0),
-              child: buildTextField("Nome de Usuário *"),
+              child: buildTextField("Nome de Usuário *", _login),
             ),
             Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 13.0),
-              child: buildTextField("Senha *", isPassword: true),
+              child: buildTextField("Senha *", _password, isPassword: true),
             ),
             Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 13.0),
-              child: buildTextField("Confirmar Senha *", isPassword: true),
+              child: buildTextField("Confirmar Senha *", _confirmPassword,
+                  isPassword: true),
             ),
             Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 13.0),
-              child:
-                  buildTextField("E-mail *", type: TextInputType.emailAddress),
+              child: buildTextField("E-mail *", _email,
+                  type: TextInputType.emailAddress),
             ),
             Padding(
                 padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 50.0),
-                child: buildTextField("Número de Telefone",
+                child: buildTextField("Número de Telefone", _phone,
                     type: TextInputType.phone)),
             GestureDetector(
               child: Center(
@@ -115,7 +123,7 @@ class _RegisterPageState extends State<RegisterPage> {
     ));
   }
 
-  Widget buildTextField(String label,
+  Widget buildTextField(String label, TextEditingController controller,
       {TextInputType type = TextInputType.text, bool isPassword = false}) {
     if (isPassword) {
       return TextField(
