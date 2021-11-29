@@ -19,7 +19,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     'Videogames',
     'Televisões',
     'Computadores',
-    'Headpgones',
+    'Headphones',
     'Tablets'
   ];
 
@@ -87,12 +87,12 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
             Padding(
               padding: const EdgeInsets.all(10),
               child: buildTextField("Título", "Exemplo: Smartphone Samsung",
-                  type: TextInputType.number),
+                  type: TextInputType.text),
             ),
             Padding(
               padding: const EdgeInsets.all(10),
               child: buildTextField("Descrição", "Exemplo: Memória 128gb",
-                  type: TextInputType.number),
+                  type: TextInputType.text),
             ),
             Padding(
               padding: const EdgeInsets.all(10),
