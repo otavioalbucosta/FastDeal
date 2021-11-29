@@ -27,7 +27,9 @@ class _MainPageState extends State<MainPage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
-          _pageController.jumpToPage(index);
+          setState(() {
+            _pageController.jumpToPage(index);
+          });
         },
         currentIndex: _selectedIndex,
         items: [
