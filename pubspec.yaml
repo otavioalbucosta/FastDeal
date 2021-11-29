@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/logo.png
     - assets/camera_icon.png
+    - assets/ProductPage.png
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
