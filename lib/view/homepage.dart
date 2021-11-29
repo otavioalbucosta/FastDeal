@@ -18,13 +18,26 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Icon(Icons.place, color: Colors.grey),
             Text("Avenida X, 9999. Fortaleza",
+                textAlign: TextAlign.start,
                 style: GoogleFonts.poppins(color: Colors.cyan, fontSize: 11.0)),
             IconButton(icon: Icon(Icons.my_location), onPressed: () {})
           ]),
+          TextField(
+            decoration: InputDecoration(
+                labelText: "Busque por produtos, marcas...",
+                labelStyle: GoogleFonts.poppins(color: Colors.grey),
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {},
+                ),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.0))),
+          ),
         ],
       ),
     );

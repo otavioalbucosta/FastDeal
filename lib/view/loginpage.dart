@@ -67,25 +67,22 @@ class LoginPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.0))),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MainPage()),
-                );
-              },
-              child: Ink(
-                width: 50.0,
-                height: 50.0,
-                decoration: const ShapeDecoration(
-                  color: Colors.black12,
-                  shape: CircleBorder(),
-                ),
-                child: IconButton(
-                  icon: const Icon(Icons.login, size: 40.0),
-                  color: Colors.black,
-                  onPressed: () {},
-                ),
+            Ink(
+              width: 50.0,
+              height: 50.0,
+              decoration: const ShapeDecoration(
+                color: Colors.black12,
+                shape: CircleBorder(),
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.login, size: 30.0),
+                color: Colors.black,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MainPage()),
+                  );
+                },
               ),
             ),
             Padding(

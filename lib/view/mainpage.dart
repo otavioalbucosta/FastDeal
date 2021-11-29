@@ -19,19 +19,16 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.cyan,
-        title: Icon(Icons.check),
-      ),
+    return Scaffold(
       body: PageView(
         children: _pages,
         controller: _pageController,
         onPageChanged: _onPageChanged,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: _onTapped,
+        onTap: (index) {
+          _pageController.jumpToPage(index);
+        },
         currentIndex: _selectedIndex,
         items: [
           BottomNavigationBarItem(
@@ -61,16 +58,12 @@ class _MainPageState extends State<MainPage> {
                       color: _selectedIndex == 2 ? Colors.blue : Colors.grey)))
         ],
       ),
-    ));
+    );
   }
 
   void _onPageChanged(int index) {
     setState(() {
       _selectedIndex = index;
     });
-  }
-
-  void _onTapped(int index) {
-    _pageController.jumpToPage(_selectedIndex);
   }
 }
