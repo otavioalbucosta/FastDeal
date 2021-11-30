@@ -1,3 +1,4 @@
+import 'package:fast_deal/view/productpage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,119 +10,125 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Widget> _gridItens = [
-    Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.phone_iphone_outlined,
-            size: 70.0,
-          ),
-          Text("Telefones", textAlign: TextAlign.center)
-        ],
-      ),
-    ),
-    Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.directions_car_outlined,
-            size: 70.0,
-          ),
-          Text("Carros", textAlign: TextAlign.center)
-        ],
-      ),
-    ),
-    Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.two_wheeler_outlined,
-            size: 70.0,
-          ),
-          Text("Motos", textAlign: TextAlign.center)
-        ],
-      ),
-    ),
-    Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.pedal_bike_outlined,
-            size: 70.0,
-          ),
-          Text("Bicicletas", textAlign: TextAlign.center)
-        ],
-      ),
-    ),
-    Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.sports_esports_outlined,
-            size: 70.0,
-          ),
-          Text("Videogames", textAlign: TextAlign.center)
-        ],
-      ),
-    ),
-    Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.tv_outlined,
-            size: 70.0,
-          ),
-          Text("Televisões", textAlign: TextAlign.center)
-        ],
-      ),
-    ),
-    Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.computer_outlined,
-            size: 70.0,
-          ),
-          Text("Computadores", textAlign: TextAlign.center)
-        ],
-      ),
-    ),
-    Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.headphones_outlined,
-            size: 70.0,
-          ),
-          Text("Headphones", textAlign: TextAlign.center)
-        ],
-      ),
-    ),
-    Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.tablet_mac_outlined,
-            size: 70.0,
-          ),
-          Text("Tablets", textAlign: TextAlign.center)
-        ],
-      ),
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    List<Widget> _gridItens = [
+      Container(
+          child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ProductPage()),
+          );
+        },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.phone_iphone_outlined,
+              size: 70.0,
+            ),
+            Text("Telefones", textAlign: TextAlign.center)
+          ],
+        ),
+      )),
+      Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.directions_car_outlined,
+              size: 70.0,
+            ),
+            Text("Carros", textAlign: TextAlign.center)
+          ],
+        ),
+      ),
+      Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.two_wheeler_outlined,
+              size: 70.0,
+            ),
+            Text("Motos", textAlign: TextAlign.center)
+          ],
+        ),
+      ),
+      Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.pedal_bike_outlined,
+              size: 70.0,
+            ),
+            Text("Bicicletas", textAlign: TextAlign.center)
+          ],
+        ),
+      ),
+      Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.sports_esports_outlined,
+              size: 70.0,
+            ),
+            Text("Videogames", textAlign: TextAlign.center)
+          ],
+        ),
+      ),
+      Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.tv_outlined,
+              size: 70.0,
+            ),
+            Text("Televisões", textAlign: TextAlign.center)
+          ],
+        ),
+      ),
+      Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.computer_outlined,
+              size: 70.0,
+            ),
+            Text("Computadores", textAlign: TextAlign.center)
+          ],
+        ),
+      ),
+      Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.headphones_outlined,
+              size: 70.0,
+            ),
+            Text("Headphones", textAlign: TextAlign.center)
+          ],
+        ),
+      ),
+      Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.tablet_mac_outlined,
+              size: 70.0,
+            ),
+            Text("Tablets", textAlign: TextAlign.center)
+          ],
+        ),
+      ),
+    ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.cyan,

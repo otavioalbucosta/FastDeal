@@ -15,7 +15,7 @@ class _ProductPageState extends State<ProductPage> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          title: Icon(Icons.arrow_back_outlined, color: Colors.black),
+          leading: BackButton(color: Colors.black),
           actions: [
             IconButton(
               onPressed: () {},
