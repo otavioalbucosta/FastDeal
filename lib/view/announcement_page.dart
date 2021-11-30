@@ -177,7 +177,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                   'Ao publicar você concorda e aceita nossos Termos de Uso e Privacidade',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
-                    fontSize: 16,
+                    fontSize: 10,
                   )),
             ),
           ],
