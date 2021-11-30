@@ -25,9 +25,10 @@ class _mydatapage extends State<mydatapage> {
           centerTitle: true,
         ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.only(top: 20.0, bottom: 15.0),
+          padding:
+              EdgeInsets.only(left: 10.0, right: 10.0, top: 20.0, bottom: 15.0),
           child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
@@ -47,16 +48,23 @@ class _mydatapage extends State<mydatapage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
-                    bottom: 28.0,
-                    left: 5.0,
-                  ),
-                  child: GestureDetector(
-                    child: Icon(Icons.account_circle, size: 100.0),
-                  ),
-                ),
-                newRow("Nome", "Adauto"),
-                newRow("Email", "adauto@gmail.com"),
+                    padding: EdgeInsets.only(
+                      bottom: 28.0,
+                      top: 15.0,
+                      left: 5.0,
+                    ),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          GestureDetector(
+                            child: Icon(
+                              Icons.account_circle_outlined,
+                              size: 100.0,
+                            ),
+                          )
+                        ])),
+                newRow("Nome", "Adauto Moisés"),
+                newRow("Email", "adautomaleandro@gmail.com"),
                 newRow("CPF", "085.149.961-83"),
                 newRow("Telefone", "(85) 98701-5362"),
               ]),
@@ -65,25 +73,27 @@ class _mydatapage extends State<mydatapage> {
 
   newRow(String Principal, String Secundario) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
             padding: EdgeInsets.only(
               top: 10.0,
-              bottom: 0.0,
+              bottom: 5.0,
               left: 5.0,
             ),
             child: Text(
               "$Principal",
-              textAlign: TextAlign.left,
+              textAlign: TextAlign.start,
               style: GoogleFonts.poppins(
                   textStyle: TextStyle(
                 color: Colors.black,
-                fontSize: 20.0,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w400,
               )),
             )),
         Padding(
             padding: EdgeInsets.only(
-              bottom: 5.0,
+              bottom: 10.0,
               left: 5.0,
             ),
             child: Text(
@@ -91,8 +101,9 @@ class _mydatapage extends State<mydatapage> {
               textAlign: TextAlign.left,
               style: GoogleFonts.poppins(
                   textStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 15.0,
+                color: Colors.grey[500],
+                fontWeight: FontWeight.w400,
+                fontSize: 13.0,
               )),
             )),
       ],
