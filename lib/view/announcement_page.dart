@@ -133,7 +133,8 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                           )),
                       Padding(
                         padding: EdgeInsets.only(bottom: 17.0),
-                        child: Text(
+                        child: Flexible(
+                            child: Text(
                           description,
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
@@ -142,7 +143,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                               fontWeight: FontWeight.w300,
                             ),
                           ),
-                        ),
+                        )),
                       ),
                       Padding(
                         padding: EdgeInsets.only(bottom: 25.0),
@@ -162,8 +163,10 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                   Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                     Padding(
                       padding: EdgeInsets.only(right: 15.0),
-                      child: Text(
+                      child: Flexible(
+                          child: Text(
                         status,
+                        overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
                             color: Colors.black,
@@ -171,7 +174,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                      ),
+                      )),
                     )
                   ]),
                 ],
