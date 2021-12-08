@@ -15,7 +15,7 @@ class _ProductPageState extends State<ProductPage> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          title: Icon(Icons.arrow_back_outlined, color: Colors.black),
+          leading: BackButton(color: Colors.black),
           actions: [
             IconButton(
               onPressed: () {},
@@ -199,11 +199,14 @@ class _ProductPageState extends State<ProductPage> {
                           ),
                         ),
                         Expanded(
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              labelText: "(85) 0 0000-0000",
-                              labelStyle: GoogleFonts.poppins(fontSize: 16.0),
+                          child: Text(
+                            "(85) 0 0000-0000",
+                            style: GoogleFonts.inter(
+                              textStyle: TextStyle(
+                                color: Colors.grey[400],
+                                fontSize: 17.0,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                           ),
                         )

@@ -1,4 +1,6 @@
+import 'package:fast_deal/view/announcement_page.dart';
 import 'package:fast_deal/view/homepage.dart';
+import 'package:fast_deal/view/mydatapage.dart';
 import 'package:flutter/material.dart';
 import 'package:fast_deal/view/loginpage.dart';
 import 'package:fast_deal/view/registerpage.dart';
@@ -14,24 +16,23 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   PageController _pageController = PageController();
-  List<Widget> _pages = [HomePage(), LoginPage(), ProductPage()];
+  List<Widget> _pages = [HomePage(), AnnouncementPage(), mydatapage()];
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.cyan,
-        title: Icon(Icons.check),
-      ),
+    return Scaffold(
       body: PageView(
         children: _pages,
         controller: _pageController,
         onPageChanged: _onPageChanged,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: _onTapped,
+        onTap: (index) {
+          setState(() {
+            _pageController.jumpToPage(index);
+          });
+        },
         currentIndex: _selectedIndex,
         items: [
           BottomNavigationBarItem(
@@ -48,7 +49,7 @@ class _MainPageState extends State<MainPage> {
                 Icons.favorite,
                 color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
               ),
-              title: Text("Favoritos",
+              title: Text("Anúncio",
                   style: GoogleFonts.poppins(
                       color: _selectedIndex == 1 ? Colors.blue : Colors.grey))),
           BottomNavigationBarItem(
@@ -56,21 +57,17 @@ class _MainPageState extends State<MainPage> {
                 Icons.account_circle,
                 color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
               ),
-              title: Text("Home",
+              title: Text("Perfil",
                   style: GoogleFonts.poppins(
                       color: _selectedIndex == 2 ? Colors.blue : Colors.grey)))
         ],
       ),
-    ));
+    );
   }
 
   void _onPageChanged(int index) {
     setState(() {
       _selectedIndex = index;
     });
-  }
-
-  void _onTapped(int index) {
-    _pageController.jumpToPage(_selectedIndex);
   }
 }

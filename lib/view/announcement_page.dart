@@ -9,176 +9,87 @@ class AnnouncementPage extends StatefulWidget {
 }
 
 class _AnnouncementPageState extends State<AnnouncementPage> {
-  bool _isSelected = false;
-  String? valueChoose;
-  List categoryList = [
-    'Smartphones',
-    'Carros',
-    'Motos',
-    'Bicicletas',
-    'Videogames',
-    'Televisões',
-    'Computadores',
-    'Headphones',
-    'Tablets'
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0,
+        leading: BackButton(color: Colors.black),
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          'Inserir Anúncio',
+          'Meus Anúncios',
           textAlign: TextAlign.center,
           style: GoogleFonts.poppins(
-              textStyle: const TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
-          )),
+            textStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 24.0,
+            ),
+          ),
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Row(children: [
-              Expanded(
-                  child: GestureDetector(
-                      child: Container(
-                        width: 120,
-                        height: 120,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          image: DecorationImage(
-                              image: AssetImage('assets/camera_icon.png'),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                      onTap: () {})),
-              Expanded(
-                  child: GestureDetector(
-                      child: Container(
-                        width: 120,
-                        height: 120,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          image: DecorationImage(
-                              image: AssetImage('assets/camera_icon.png'),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                      onTap: () {})),
-              Expanded(
-                  child: GestureDetector(
-                      child: Container(
-                        width: 120,
-                        height: 120,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          image: DecorationImage(
-                              image: AssetImage('assets/camera_icon.png'),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                      onTap: () {})),
-            ]),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: buildTextField("Título", "Exemplo: Smartphone Samsung",
-                  type: TextInputType.text),
+            Divider(
+              height: 0.1,
+              thickness: 0.25,
+              color: Colors.grey[600],
             ),
             Padding(
-              padding: const EdgeInsets.all(10),
-              child: buildTextField("Descrição", "Exemplo: Memória 128gb",
-                  type: TextInputType.text),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: DropdownButton(
-                hint: const Text('Categorias: '),
-                dropdownColor: Colors.white,
-                icon: const Icon(Icons.expand_more),
-                iconSize: 36,
-                isExpanded: true,
-                underline: const SizedBox(),
-                style: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
-                value: valueChoose,
-                onChanged: (newValue) {
-                  setState(() {
-                    valueChoose = newValue as String?;
-                  });
-                },
-                items: categoryList.map((valueItem) {
-                  return DropdownMenuItem(
-                    value: valueItem,
-                    child: Text(valueItem),
-                  );
-                }).toList(),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Row(
+              padding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 0.0),
+              child: Column(
                 children: [
-                  Expanded(
-                    child: buildTextField("CEP", "60040-531",
-                        type: TextInputType.number),
-                  ),
-                  const Divider(thickness: 10, indent: 40),
-                  Expanded(
-                    child: buildTextField("Preço", "900,00",
-                        type: TextInputType.number),
-                  ),
+                  buildCard(
+                      'https://images-submarino.b2w.io/produtos/01/00/img/1611315/9/1611315984_1GG.jpg',
+                      'Smartphone Apple',
+                      'Iphone 11 64GB iOS Câmera Dupla',
+                      'R\$ 9999,99',
+                      'Ativo'),
+                  buildCard(
+                      'https://images-submarino.b2w.io/produtos/131813722/imagens/fogao-consul-5-bocas-acendimento-automatico-cfs5nar/131813722_1_large.jpg',
+                      'Fogão CONSUL',
+                      '5 Bocas',
+                      'R\$ 2000,00',
+                      'Pendente'),
+                  buildCard(
+                      'https://www.cabralmotor.com.br/wp-content/uploads/CARGO_2022_34_F.png',
+                      'Honda CG 160 Cargo',
+                      'A melhor das CG para se trabalhar com entregas.',
+                      'R\$ 13.785,00',
+                      'Expirado'),
+                  SizedBox(
+                    width: 130,
+                    height: 70,
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 20.0),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Anunciar',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                                color: Colors.black,
+                                fontSize: 17.0,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.cyanAccent),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
-            ),
-            LabeledCheckbox(
-                label: 'Ocultar o meu telefone neste anúncio',
-                padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
-                value: _isSelected,
-                controlAffinity: ListTileControlAffinity.trailing,
-                onChanged: (bool newValue) {
-                  setState(() {
-                    _isSelected = newValue;
-                  });
-                }),
-            Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10),
-              child: Text(
-                'Os interessados entrarão em contato com você por meio do nosso chat :)',
-                style: GoogleFonts.poppins(fontSize: 16, color: Colors.grey),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: GestureDetector(
-                child: Center(
-                  child: Ink(
-                    width: 80,
-                    height: 80,
-                    decoration: const ShapeDecoration(
-                      color: Colors.black12,
-                      shape: CircleBorder(),
-                    ),
-                    child: IconButton(
-                      icon: const Icon(Icons.done, size: 40),
-                      color: Colors.black,
-                      onPressed: () {},
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                  'Ao publicar você concorda e aceita nossos Termos de Uso e Privacidade',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                  )),
             ),
           ],
         ),
@@ -186,56 +97,104 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     );
   }
 
-  Widget buildTextField(String label, String hint,
-      {TextInputType type = TextInputType.text}) {
-    return TextField(
-        keyboardType: type,
-        decoration: InputDecoration(
-          labelText: label,
-          labelStyle: GoogleFonts.poppins(fontSize: 16.0),
-          hintText: hint,
-          hintStyle: const TextStyle(color: Colors.grey),
-        ));
-  }
-}
-
-class LabeledCheckbox extends StatelessWidget {
-  const LabeledCheckbox({
-    Key? key,
-    required this.label,
-    required this.padding,
-    required this.value,
-    required this.onChanged,
-    required this.controlAffinity,
-  }) : super(key: key);
-
-  final String label;
-  final EdgeInsets padding;
-  final bool value;
-  final Function onChanged;
-  final ListTileControlAffinity controlAffinity;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        onChanged(!value);
-      },
-      child: Padding(
-        padding: padding,
+  Widget buildCard(String image, String product, String description,
+      String price, String status) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 25.0),
+      child: Container(
+        width: 380,
+        height: 200,
         child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Text(label, style: GoogleFonts.poppins(fontSize: 16)),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image(
+              width: 170.0,
+              height: 300.0,
+              image: NetworkImage(image),
             ),
-            Checkbox(
-              value: value,
-              onChanged: (bool? newValue) {
-                onChanged(newValue);
-              },
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                          padding: EdgeInsets.only(top: 15.0, bottom: 17.0),
+                          child: Text(
+                            product,
+                            style: GoogleFonts.cabin(
+                              textStyle: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          )),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 17.0),
+                        child: Text(
+                          description,
+                          style: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 25.0),
+                        child: Text(
+                          price,
+                          style: GoogleFonts.roboto(
+                            textStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 27.0,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                    Padding(
+                      padding: EdgeInsets.only(right: 15.0),
+                      child: Text(
+                        status,
+                        style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    )
+                  ]),
+                ],
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.more_vert_outlined,
+                color: Colors.black,
+              ),
             ),
           ],
         ),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black.withOpacity(0.25),
+                  blurRadius: 4,
+                  offset: Offset(0, 4))
+            ]),
       ),
     );
   }
