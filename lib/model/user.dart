@@ -10,7 +10,7 @@ String emailColumn = "emailColumn";
 String telefoneColumn = "telefoneColumn";
 String imagemColumn = "imagemColumn";
 String hashSenhaColumn = "hashSenhaColumn";
-
+String userTable = "userTable";
 String usuarioIdColumn = "usuarioIdColumn";
 
 class Usuario {
