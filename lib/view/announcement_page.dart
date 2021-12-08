@@ -41,19 +41,19 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
               padding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 0.0),
               child: Column(
                 children: [
-                  buildCard(
+                  buildAnnouncementCard(
                       'https://images-submarino.b2w.io/produtos/01/00/img/1611315/9/1611315984_1GG.jpg',
                       'Smartphone Apple',
                       'Iphone 11 64GB iOS Câmera Dupla',
                       'R\$ 9999,99',
                       'Ativo'),
-                  buildCard(
+                  buildAnnouncementCard(
                       'https://images-submarino.b2w.io/produtos/131813722/imagens/fogao-consul-5-bocas-acendimento-automatico-cfs5nar/131813722_1_large.jpg',
                       'Fogão CONSUL',
                       '5 Bocas',
                       'R\$ 2000,00',
                       'Pendente'),
-                  buildCard(
+                  buildAnnouncementCard(
                       'https://www.cabralmotor.com.br/wp-content/uploads/CARGO_2022_34_F.png',
                       'Honda CG 160 Cargo',
                       'A melhor das CG para se trabalhar com entregas.',
@@ -97,7 +97,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     );
   }
 
-  Widget buildCard(String image, String product, String description,
+  Widget buildAnnouncementCard(String image, String product, String description,
       String price, String status) {
     return Padding(
       padding: EdgeInsets.only(bottom: 25.0),
@@ -123,6 +123,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                           padding: EdgeInsets.only(top: 15.0, bottom: 17.0),
                           child: Text(
                             product,
+                            overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.cabin(
                               textStyle: TextStyle(
                                 color: Colors.black,
@@ -136,6 +137,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                         child: Flexible(
                             child: Text(
                           description,
+                          overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               color: Colors.black,
