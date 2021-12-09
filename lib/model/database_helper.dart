@@ -1,3 +1,4 @@
+import 'package:fast_deal/model/user.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
@@ -52,5 +53,16 @@ class DatabaseHelper {
     }, onConfigure: (Database db) async {
       await db.execute("PRAGMA foreign_keys = ON");
     });
+  }
+
+  Future<List<Usuario>> getUsuario(String login) async {
+    Database? dbUser = await db;
+    List<Map> list = await dbUser!
+        .rawQuery("SELECT * FROM $userTable WHERE $nomeColumn = ?", [login]);
+    List<Usuario> userList = [];
+    for (Map m in list) {
+      userList.add(Usuario.fromMap(m));
+    }
+    return userList;
   }
 }

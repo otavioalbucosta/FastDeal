@@ -95,7 +95,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           _email.text != "" &&
                           _phone.text != "" &&
                           _password.text == _confirmPassword.text) {
-                      } else {
                         String hashSenha =
                             md5.convert(utf8.encode(_password.text)).toString();
                         Usuario user = Usuario();
@@ -103,8 +102,10 @@ class _RegisterPageState extends State<RegisterPage> {
                         user.hashSenha = hashSenha;
                         user.email = _email.text;
                         user.telefone = _phone.text;
-                        print(await user.saveUsuario());
+                        await user.saveUsuario();
                         Navigator.pop(context);
+                      } else {
+                        print("erro");
                       }
                     },
                   ),
@@ -148,6 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
       {TextInputType type = TextInputType.text, bool isPassword = false}) {
     if (isPassword) {
       return TextField(
+        controller: controller,
         keyboardType: type,
         obscureText: _isObscure,
         enableSuggestions: false,
@@ -169,6 +171,7 @@ class _RegisterPageState extends State<RegisterPage> {
       );
     } else {
       return TextField(
+        controller: controller,
         keyboardType: type,
         textAlign: TextAlign.start,
         decoration: InputDecoration(

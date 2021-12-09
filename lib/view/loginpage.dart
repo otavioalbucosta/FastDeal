@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:fast_deal/model/user.dart';
 import 'package:crypto/crypto.dart';
 import 'dart:convert';
+import 'package:fast_deal/model/database_helper.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  DatabaseHelper helper = DatabaseHelper();
+  LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -88,13 +90,11 @@ class LoginPage extends StatelessWidget {
                   String passwordHash = md5
                       .convert(utf8.encode(passwordController.text))
                       .toString();
-                  Usuario? user = await Usuario.getUsuario(
-                      loginController.text, passwordHash);
-                  print(user!.id);
-                  if (user == null) {
-                    loginController.text = "";
-                    passwordController.text = "";
-                  } else {
+                  Usuario? user =
+                      await Usuario.getUsuario(loginController.text);
+
+                  if (user!.nome == loginController.text &&
+                      user.hashSenha == passwordHash) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(

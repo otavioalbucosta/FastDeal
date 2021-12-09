@@ -60,18 +60,10 @@ class Usuario {
     return this.id;
   }
 
-  static Future<Usuario?> getUsuario(String login, String hashSenha) async {
+  static Future<Usuario?> getUsuario(String login) async {
     Database? dbUser = await helper.db;
-    List<Map> list = await dbUser!.query(userTable,
-        columns: [
-          idColumn,
-          nomeColumn,
-          emailColumn,
-          telefoneColumn,
-          hashSenhaColumn,
-        ],
-        where: "$nomeColumn = ? AND $hashSenhaColumn = ?",
-        whereArgs: [login, hashSenha]);
+    List<Map> list = await dbUser!
+        .rawQuery("SELECT * FROM $userTable WHERE $nomeColumn = ?", [login]);
     if (list.length > 0) {
       return Usuario.fromMap(list.first);
     } else {
