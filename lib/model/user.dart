@@ -20,7 +20,7 @@ class Usuario {
   String? telefone;
   String? imagem;
   String? hashSenha;
-  DatabaseHelper helper = DatabaseHelper();
+  static DatabaseHelper helper = DatabaseHelper();
 
   Future<Product> criaProduto({
     String? titulo,
@@ -64,7 +64,7 @@ class Usuario {
     return this;
   }
 
-  Future<Product?> getUsuario(int id) async {
+  static Future<Usuario?> getUsuario(String login, String hashSenha) async {
     Database? dbUser = await helper.db;
     List<Map> list = await dbUser!.query(userTable,
         columns: [
@@ -75,16 +75,16 @@ class Usuario {
           imagemColumn,
           hashSenhaColumn,
         ],
-        where: "$idColumn = ?",
-        whereArgs: [id]);
+        where: "$nomeColumn = ? AND $hashSenhaColumn = ?",
+        whereArgs: [login, hashSenha]);
     if (list.length > 0) {
-      return Product.fromMap(list.first);
+      return Usuario.fromMap(list.first);
     } else {
       return null;
     }
   }
 
-  Future<int> deleteProduct([int? id]) async {
+  Future<int> deleteUsuario([int? id]) async {
     if (id == null) {
       id = this.id;
     }
@@ -93,7 +93,7 @@ class Usuario {
         .delete(userTable, where: "$idColumn = ?", whereArgs: [id]);
   }
 
-  Future<int> updateProduct(Usuario user) async {
+  Future<int> updateUsuario(Usuario user) async {
     Database? dbUser = await helper.db;
     return await dbUser!.update(userTable, user.toMap(),
         where: "$idColumn = ?", whereArgs: [user.id]);

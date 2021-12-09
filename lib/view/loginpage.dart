@@ -3,12 +3,17 @@ import 'package:fast_deal/view/mainpage.dart';
 import 'package:fast_deal/view/registerpage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:fast_deal/model/user.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController loginController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return Scaffold(
         body: SingleChildScrollView(
       padding: EdgeInsets.only(top: 20.0, bottom: 15.0),
@@ -45,6 +50,7 @@ class LoginPage extends StatelessWidget {
               padding: EdgeInsets.only(
                   left: 10.0, right: 10.0, bottom: 27.0, top: 30.0),
               child: TextField(
+                controller: loginController,
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                     labelText: "Login",
@@ -56,6 +62,7 @@ class LoginPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 100.0),
               child: TextField(
+                controller: passwordController,
                 obscureText: true,
                 enableSuggestions: false,
                 autocorrect: false,
@@ -78,6 +85,10 @@ class LoginPage extends StatelessWidget {
                 icon: const Icon(Icons.login, size: 30.0),
                 color: Colors.black,
                 onPressed: () {
+                  String passwordHash = md5
+                      .convert(utf8.encode(passwordController.text))
+                      .toString();
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const MainPage()),
