@@ -84,15 +84,23 @@ class LoginPage extends StatelessWidget {
               child: IconButton(
                 icon: const Icon(Icons.login, size: 30.0),
                 color: Colors.black,
-                onPressed: () {
+                onPressed: () async {
                   String passwordHash = md5
                       .convert(utf8.encode(passwordController.text))
                       .toString();
-
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MainPage()),
-                  );
+                  Usuario? user = await Usuario.getUsuario(
+                      loginController.text, passwordHash);
+                  print(user!.id);
+                  if (user == null) {
+                    loginController.text = "";
+                    passwordController.text = "";
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MainPage(user: user)),
+                    );
+                  }
                 },
               ),
             ),

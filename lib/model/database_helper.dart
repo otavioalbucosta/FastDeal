@@ -46,7 +46,7 @@ class DatabaseHelper {
     return await openDatabase(path, version: 1,
         onCreate: (Database db, int newerVersion) async {
       await db.execute(
-          "CREATE TABLE $userTable($idColumn INTEGER PRIMARY KEY, $nomeColumn TEXT, $emailColumn TEXT, $telefoneColumn TEXT, $imagemColumn TEXT, $hashSenhaColumn TEXT)");
+          "CREATE TABLE $userTable($idColumn INTEGER PRIMARY KEY, $nomeColumn TEXT, $emailColumn TEXT, $telefoneColumn TEXT,$hashSenhaColumn TEXT)");
       await db.execute(
           "CREATE TABLE $productTable($idColumn INTEGER PRIMARY KEY, $usuarioIdColumn INTEGER, $tituloColumn TEXT, $precoColumn REAL, $imagemColumn TEXT, $descricaoColumn TEXT, $categoriaColumn TEXT, $cepColumn TEXT, $statusColumn TEXT, FOREIGN KEY($usuarioIdColumn) REFERENCES $userTable($idColumn))");
     }, onConfigure: (Database db) async {

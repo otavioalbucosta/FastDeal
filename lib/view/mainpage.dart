@@ -1,6 +1,9 @@
+import 'package:fast_deal/model/user.dart';
 import 'package:fast_deal/view/announcement_page.dart';
+import 'package:fast_deal/view/favoritepage.dart';
 import 'package:fast_deal/view/homepage.dart';
 import 'package:fast_deal/view/mydatapage.dart';
+import 'package:fast_deal/view/profilepage.dart';
 import 'package:flutter/material.dart';
 import 'package:fast_deal/view/loginpage.dart';
 import 'package:fast_deal/view/registerpage.dart';
@@ -8,16 +11,26 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:fast_deal/view/productpage.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+  final Usuario? user;
+  MainPage({Key? key, this.user}) : super(key: key);
 
   @override
   _MainPageState createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
+  Usuario? user;
   PageController _pageController = PageController();
-  List<Widget> _pages = [HomePage(), AnnouncementPage(), mydatapage()];
+  List<Widget> _pages = [HomePage(), FavoritePage(), ProfilePage()];
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    user = widget.user;
+    _pages[2] = ProfilePage(user: user);
+  }
 
   @override
   Widget build(BuildContext context) {

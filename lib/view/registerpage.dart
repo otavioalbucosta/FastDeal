@@ -1,8 +1,11 @@
 import 'dart:ui';
+import 'package:fast_deal/model/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -85,7 +88,25 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: IconButton(
                     icon: const Icon(Icons.done, size: 30.0),
                     color: Colors.black,
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (_login.text != "" &&
+                          _password.text != "" &&
+                          _confirmPassword.text != "" &&
+                          _email.text != "" &&
+                          _phone.text != "" &&
+                          _password.text == _confirmPassword.text) {
+                      } else {
+                        String hashSenha =
+                            md5.convert(utf8.encode(_password.text)).toString();
+                        Usuario user = Usuario();
+                        user.nome = _login.text;
+                        user.hashSenha = hashSenha;
+                        user.email = _email.text;
+                        user.telefone = _phone.text;
+                        print(await user.saveUsuario());
+                        Navigator.pop(context);
+                      }
+                    },
                   ),
                 ),
               ),

@@ -8,7 +8,6 @@ String idColumn = "idColumn";
 String nomeColumn = "nomeColumn";
 String emailColumn = "emailColumn";
 String telefoneColumn = "telefoneColumn";
-String imagemColumn = "imagemColumn";
 String hashSenhaColumn = "hashSenhaColumn";
 String userTable = "userTable";
 String usuarioIdColumn = "usuarioIdColumn";
@@ -18,7 +17,6 @@ class Usuario {
   String? nome;
   String? email;
   String? telefone;
-  String? imagem;
   String? hashSenha;
   static DatabaseHelper helper = DatabaseHelper();
 
@@ -40,7 +38,6 @@ class Usuario {
     nome = map[nomeColumn];
     email = map[emailColumn];
     telefone = map[telefoneColumn];
-    imagem = map[imagemColumn];
     hashSenha = map[hashSenhaColumn];
   }
 
@@ -49,7 +46,6 @@ class Usuario {
       nomeColumn: nome,
       emailColumn: email,
       telefoneColumn: telefone,
-      imagemColumn: imagem,
       hashSenhaColumn: hashSenha,
     };
     if (id != null) {
@@ -58,10 +54,10 @@ class Usuario {
     return map;
   }
 
-  Future<Usuario> saveUsuario() async {
+  Future<int?> saveUsuario() async {
     Database? dbUser = await helper.db;
     this.id = await dbUser!.insert(userTable, this.toMap());
-    return this;
+    return this.id;
   }
 
   static Future<Usuario?> getUsuario(String login, String hashSenha) async {
@@ -72,7 +68,6 @@ class Usuario {
           nomeColumn,
           emailColumn,
           telefoneColumn,
-          imagemColumn,
           hashSenhaColumn,
         ],
         where: "$nomeColumn = ? AND $hashSenhaColumn = ?",

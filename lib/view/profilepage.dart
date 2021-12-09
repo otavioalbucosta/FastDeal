@@ -1,9 +1,13 @@
+import 'package:fast_deal/model/user.dart';
+import 'package:fast_deal/view/announcement_page.dart';
+import 'package:fast_deal/view/mydatapage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:ui';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  final Usuario? user;
+  ProfilePage({Key? key, this.user}) : super(key: key);
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -93,6 +97,147 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(right: 10.0),
+                          child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => mydatapage()),
+                                );
+                              },
+                              child: Container(
+                                width: 190,
+                                height: 130,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(Icons.person_outlined,
+                                          size: 40.0, color: Colors.black),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 17.0, left: 15.0),
+                                      child: Text(
+                                        'Meus Dados',
+                                        style: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.25),
+                                      blurRadius: 4,
+                                      offset: Offset(0, 4),
+                                    )
+                                  ],
+                                ),
+                              )),
+                        ),
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AnnouncementPage()),
+                              );
+                            },
+                            child: Container(
+                              width: 190,
+                              height: 130,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.local_offer_outlined,
+                                        size: 40.0, color: Colors.black),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 17.0, left: 15.0),
+                                    child: Text(
+                                      'Meus Anúncios',
+                                      style: GoogleFonts.poppins(
+                                        textStyle: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.25),
+                                      blurRadius: 4,
+                                      offset: Offset(0, 4),
+                                    )
+                                  ]),
+                            )),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: 10.0),
+                        child: GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              width: 190,
+                              height: 130,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.notifications_outlined,
+                                        size: 40.0, color: Colors.black),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 17.0, left: 15.0),
+                                    child: Text(
+                                      'Notificações',
+                                      style: GoogleFonts.poppins(
+                                        textStyle: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.25),
+                                      blurRadius: 4,
+                                      offset: Offset(0, 4),
+                                    )
+                                  ]),
+                            )),
+                      ),
+                      GestureDetector(
+                          onTap: () {},
                           child: Container(
                             width: 190,
                             height: 130,
@@ -101,14 +246,14 @@ class _ProfilePageState extends State<ProfilePage> {
                               children: [
                                 IconButton(
                                   onPressed: () {},
-                                  icon: Icon(Icons.person_outlined,
+                                  icon: Icon(Icons.archive_outlined,
                                       size: 40.0, color: Colors.black),
                                 ),
                                 Padding(
                                   padding:
                                       EdgeInsets.only(top: 17.0, left: 15.0),
                                   child: Text(
-                                    'Meus Dados',
+                                    'Conversas Arquivadas',
                                     style: GoogleFonts.poppins(
                                       textStyle: TextStyle(
                                           color: Colors.black,
@@ -120,133 +265,15 @@ class _ProfilePageState extends State<ProfilePage> {
                               ],
                             ),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.0),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.25),
-                                  blurRadius: 4,
-                                  offset: Offset(0, 4),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 190,
-                          height: 130,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.local_offer_outlined,
-                                    size: 40.0, color: Colors.black),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 17.0, left: 15.0),
-                                child: Text(
-                                  'Meus Anúncios',
-                                  style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.0),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.25),
-                                  blurRadius: 4,
-                                  offset: Offset(0, 4),
-                                )
-                              ]),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(right: 10.0),
-                        child: Container(
-                          width: 190,
-                          height: 130,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.notifications_outlined,
-                                    size: 40.0, color: Colors.black),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 17.0, left: 15.0),
-                                child: Text(
-                                  'Notificações',
-                                  style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.0),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.25),
-                                  blurRadius: 4,
-                                  offset: Offset(0, 4),
-                                )
-                              ]),
-                        ),
-                      ),
-                      Container(
-                        width: 190,
-                        height: 130,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.archive_outlined,
-                                  size: 40.0, color: Colors.black),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 17.0, left: 15.0),
-                              child: Text(
-                                'Conversas Arquivadas',
-                                style: GoogleFonts.poppins(
-                                  textStyle: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.0),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.25),
-                                  blurRadius: 4,
-                                  offset: Offset(0, 4))
-                            ]),
-                      ),
+                                borderRadius: BorderRadius.circular(8.0),
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(0.25),
+                                      blurRadius: 4,
+                                      offset: Offset(0, 4))
+                                ]),
+                          )),
                     ],
                   ),
                 ],

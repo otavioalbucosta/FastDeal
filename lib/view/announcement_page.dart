@@ -148,7 +148,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                         )),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(bottom: 25.0),
+                        padding: EdgeInsets.only(bottom: 15.0),
                         child: Text(
                           price,
                           style: GoogleFonts.roboto(
