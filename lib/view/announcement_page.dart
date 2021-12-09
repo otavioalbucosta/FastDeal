@@ -1,3 +1,5 @@
+import 'package:fast_deal/view/announce_page.dart';
+import 'package:fast_deal/view/productpage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,7 +21,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          'Meus Anúncios',
+          'Anúncios Feitos',
           textAlign: TextAlign.center,
           style: GoogleFonts.poppins(
             textStyle: TextStyle(
@@ -46,7 +48,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                       'Smartphone Apple',
                       'Iphone 11 64GB iOS Câmera Dupla',
                       'R\$ 9999,99',
-                      'Ativo'),
+                      'Vendido'),
                   buildAnnouncementCard(
                       'https://images-submarino.b2w.io/produtos/131813722/imagens/fogao-consul-5-bocas-acendimento-automatico-cfs5nar/131813722_1_large.jpg',
                       'Fogão CONSUL',
@@ -65,7 +67,12 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 20.0),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Announce()),
+                          );
+                        },
                         child: Text(
                           'Anunciar',
                           textAlign: TextAlign.center,
@@ -101,106 +108,113 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
       String price, String status) {
     return Padding(
       padding: EdgeInsets.only(bottom: 25.0),
-      child: Container(
-        width: 380,
-        height: 200,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image(
-              width: 170.0,
-              height: 300.0,
-              image: NetworkImage(image),
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
+      child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ProductPage()),
+            );
+          },
+          child: Container(
+            width: 380,
+            height: 200,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image(
+                  width: 170.0,
+                  height: 300.0,
+                  image: NetworkImage(image),
+                ),
+                Expanded(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                          padding: EdgeInsets.only(top: 15.0, bottom: 17.0),
-                          child: Text(
-                            product,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                              padding: EdgeInsets.only(top: 15.0, bottom: 17.0),
+                              child: Text(
+                                product,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.cabin(
+                                  textStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              )),
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 17.0),
+                            child: Flexible(
+                                child: Text(
+                              description,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            )),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 15.0),
+                            child: Text(
+                              price,
+                              style: GoogleFonts.roboto(
+                                textStyle: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 27.0,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                        Padding(
+                          padding: EdgeInsets.only(right: 15.0),
+                          child: Flexible(
+                              child: Text(
+                            status,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.cabin(
+                            style: GoogleFonts.poppins(
                               textStyle: TextStyle(
                                 color: Colors.black,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.w300,
+                                fontSize: 17.0,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           )),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 17.0),
-                        child: Flexible(
-                            child: Text(
-                          description,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                        )),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 15.0),
-                        child: Text(
-                          price,
-                          style: GoogleFonts.roboto(
-                            textStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 27.0,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                      ),
+                        )
+                      ]),
                     ],
                   ),
-                  Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                    Padding(
-                      padding: EdgeInsets.only(right: 15.0),
-                      child: Flexible(
-                          child: Text(
-                        status,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
-                            color: Colors.black,
-                            fontSize: 17.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      )),
-                    )
-                  ]),
-                ],
-              ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.more_vert_outlined,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
             ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.more_vert_outlined,
-                color: Colors.black,
-              ),
-            ),
-          ],
-        ),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.0),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black.withOpacity(0.25),
-                  blurRadius: 4,
-                  offset: Offset(0, 4))
-            ]),
-      ),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      blurRadius: 4,
+                      offset: Offset(0, 4))
+                ]),
+          )),
     );
   }
 }

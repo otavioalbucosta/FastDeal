@@ -1,5 +1,6 @@
 import 'package:fast_deal/model/user.dart';
 import 'package:fast_deal/view/announcement_page.dart';
+import 'package:fast_deal/view/favoritepage.dart';
 import 'package:fast_deal/view/mydatapage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,7 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             bottom: 5.0,
                           ),
                           child: Text(
-                            "Bem-Vindo",
+                            "Bem-Vindo, ${widget.user!.nome}",
                             style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
                                     color: Colors.black,
@@ -55,35 +56,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                     fontWeight: FontWeight.w400)),
                           ),
                         ),
-                        SizedBox(
-                          width: 120,
-                          height: 50,
-                          child: Padding(
-                            padding: EdgeInsets.only(bottom: 20.0),
-                            child: TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                'Fazer Login',
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(
-                                  textStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 13.0,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ),
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(Colors.black),
-                                shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6.0),
-                                  ),
-                                ),
-                              ),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 20.0),
+                          child: Text(
+                            '${widget.user!.email}',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 13.0,
+                                  fontWeight: FontWeight.w400),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ],
@@ -102,7 +87,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => mydatapage()),
+                                      builder: (context) =>
+                                          mydatapage(user: widget.user)),
                                 );
                               },
                               child: Container(
@@ -149,7 +135,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AnnouncementPage()),
+                                    builder: (context) => FavoritePage()),
                               );
                             },
                             child: Container(
@@ -160,14 +146,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                 children: [
                                   IconButton(
                                     onPressed: () {},
-                                    icon: Icon(Icons.local_offer_outlined,
+                                    icon: Icon(Icons.favorite,
                                         size: 40.0, color: Colors.black),
                                   ),
                                   Padding(
                                     padding:
                                         EdgeInsets.only(top: 17.0, left: 15.0),
                                     child: Text(
-                                      'Meus Anúncios',
+                                      'Anúncios Favoritados',
                                       style: GoogleFonts.poppins(
                                         textStyle: TextStyle(
                                             color: Colors.black,

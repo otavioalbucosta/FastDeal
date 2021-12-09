@@ -1,11 +1,13 @@
 import 'dart:ui';
+import 'package:fast_deal/model/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 class mydatapage extends StatefulWidget {
-  const mydatapage({Key? key}) : super(key: key);
+  final Usuario? user;
+  mydatapage({Key? key, this.user}) : super(key: key);
 
   @override
   _mydatapage createState() => _mydatapage();
@@ -63,10 +65,10 @@ class _mydatapage extends State<mydatapage> {
                             ),
                           )
                         ])),
-                newRow("Nome", "Adauto Moisés"),
-                newRow("Email", "adautomaleandro@gmail.com"),
-                newRow("CPF", "085.149.961-83"),
-                newRow("Telefone", "(85) 98701-5362"),
+                newRow("Nome", widget.user!.nome ?? "Sem nome encontrado"),
+                newRow("Email", widget.user!.email ?? "Sem email encontrado"),
+                newRow("Telefone",
+                    widget.user!.telefone ?? "Sem telefone encontrado"),
               ]),
         ));
   }

@@ -15,12 +15,6 @@ class _HomePageState extends State<HomePage> {
     List<Widget> _gridItens = [
       Container(
           child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const ProductPage()),
-          );
-        },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

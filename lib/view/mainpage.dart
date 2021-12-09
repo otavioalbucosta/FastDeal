@@ -21,7 +21,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   Usuario? user;
   PageController _pageController = PageController();
-  List<Widget> _pages = [HomePage(), FavoritePage(), ProfilePage()];
+  List<Widget> _pages = [HomePage(), AnnouncementPage(), ProfilePage()];
   int _selectedIndex = 0;
 
   @override
@@ -59,7 +59,7 @@ class _MainPageState extends State<MainPage> {
           ),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.favorite,
+                Icons.local_offer_outlined,
                 color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
               ),
               title: Text("Anúncio",
